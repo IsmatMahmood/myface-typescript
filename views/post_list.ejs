@@ -11,6 +11,17 @@
                         <p><%= post.message %> </p>
                         <p> Created on: <%= post.createdAt.slice(0, 10).split("-").reverse().join("-") %> </p>
                         <p> Posted by: <%=post.postedBy.name%></p>
+                        <div class='like-container'>
+                            <form action="/posts/<%= post.id%>/like/" method="POST">
+                                <button class = 'like-button' type="submit">❤️</button>
+                                <p class='like-counter'><%=post.likedBy.length%></p>
+                            </form>       
+                            <form action="/posts/<%= post.id%>/dislike" method="POST">
+                                <button class = 'dislike-button' type="submit">💔</button>
+                                <p class='dislike-counter'><%=post.dislikedBy.length%></p>
+                            </form> 
+                        </div>
+                        
                     </li>
                     <% }); %>
             </ol>
