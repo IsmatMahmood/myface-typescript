@@ -1,8 +1,32 @@
 <html lang="en-gb">
 <%- include('_head') -%>
-<%- include('_header') -%>
-<body>
-<h1>Create Post</h1>
-</body>
-<%- include('_footer') -%>
+    <%- include('_header') -%>
+        <script>
+            // automatically add http:// to a url if there isn't already a protocol
+    // use with onblur executes the script when the user leaves the input field
+            function checkURL(abc) {
+                var string = abc.value;
+                if (!~string.indexOf("http")) {
+                    string = "http://" + string;
+                }
+                abc.value = string;
+                return abc
+            }</script>
+
+        <body>
+            <h1>Create Post</h1>
+            <form method="post" action="/posts/create">
+                <label>
+                    Message:
+                    <input type="text" name="message" required />
+                </label>
+                <label>
+                    Image Url:
+                    <input type="url" name="imageUrl" onblur="checkURL(this)" required />
+                </label>
+                <button type="submit">Submit</button>
+            </form>
+        </body>
+        <%- include('_footer') -%>
+
 </html>
