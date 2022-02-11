@@ -2,7 +2,46 @@
 <%- include('_head') -%>
 <%- include('_header') -%>
 <body>
-<h1><%= name %></h1>
+        <img class="user_cover" src=<%= coverImageUrl %> >
+        <div class="user_details">
+            <img class="user_profile" src=<%= profileImageUrl %> >
+            <div class="user_detail2">
+            <h1 class="user_name"><%= name %></h1>
+            <h2 class="user_username"><%= username %></h2>
+            <h2 class="user_email"><%= email %></h2>
+        </div>
+        </div>
+
+    <div class="user_posts">
+        <h3><%= name %> Posts</h3>
+        <% posts.forEach(function(post) {%>
+        <li>
+            <img src=<%= post.imageUrl %>
+            <h4> <%= username %> </h4>
+            <h4> <%= post.createdAt.slice(0, 10).split("-").reverse().join("-") %></h4>
+            <h5><%= post.message %></h5>
+        </li> <%}); %>
+    </div>
+    <div class="user_likes">
+        <h3>Likes</h3>
+        <% likes.forEach(function(post) {%>
+            <li>
+                <img src=<%= post.imageUrl %>
+                <h4> <%= username %> </h4>
+                <h4> <%= post.createdAt.slice(0, 10).split("-").reverse().join("-") %></h4>
+                <h5><%= post.message %></h5>
+            </li> <%}); %>
+    </div>
+    <div class="user_dislikes">
+        <h3>Dislikes</h3>
+        <% dislikes.forEach(function(post) {%>
+            <li>
+                <img src=<%= post.imageUrl %>
+                <h4> <%= username %> </h4>
+                <h4> <%= post.createdAt.slice(0, 10).split("-").reverse().join("-") %></h4>
+                <h5><%= post.message %></h5>
+            </li> <%}); %>
+    </div>
 </body>
 <%- include('_footer') -%>
 </html>
